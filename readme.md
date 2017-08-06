@@ -27,8 +27,8 @@ The link https://hackaday.com/2016/09/21/creating-a-pcb-in-everything-introducti
 
 ## KiCad
 
-### Good KiCad Tutorials
-
-* https://hackaday.com/2016/11/17/creating-a-pcb-in-everything-kicad-part-1/
-
+### Great KiCad Tutorials
 * http://docs.kicad-pcb.org/stable/en/getting_started_in_kicad.pdf
+* https://hackaday.com/2016/11/17/creating-a-pcb-in-everything-kicad-part-1/
+* https://hackaday.com/2016/12/09/creating-a-pcb-in-everything-kicad-part-2/
+* https://hackaday.com/2016/12/23/creating-a-pcb-in-everything-kicad-part-3/
