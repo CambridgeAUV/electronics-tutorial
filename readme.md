@@ -32,3 +32,11 @@ The link https://hackaday.com/2016/09/21/creating-a-pcb-in-everything-introducti
 * https://hackaday.com/2016/11/17/creating-a-pcb-in-everything-kicad-part-1/
 * https://hackaday.com/2016/12/09/creating-a-pcb-in-everything-kicad-part-2/
 * https://hackaday.com/2016/12/23/creating-a-pcb-in-everything-kicad-part-3/
+
+
+
+
+## STM Development setup
+
+- References: follow instructions on http://www.davidrojas.co.uk/stm32f3discovery-on-mac-os-x-using-eclipse-gcc-arm-and-openocd/ **except** on the installation of CDT pakages at step `Eclipse IDE`
+- To install CDT packages, follow instruction on https://www.element14.com/community/thread/55206/l/cannot-install-j-link-debugging-on-fresh-eclipse-on-windows-10?displayFullThread=true
