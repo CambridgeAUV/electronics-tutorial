@@ -1,3 +1,7 @@
+CAUV Electronics tutorial
+
+Author: Li Xi (xl404)
+
 # 1. Contents
 
 <!-- TOC -->
