@@ -18,6 +18,7 @@ Author: Li Xi (xl404)
     - [3.2.2. Installing the GCC ARM toolchain](#322-installing-the-gcc-arm-toolchain)
     - [3.2.3. Installing and Configuring OpenOCD](#323-installing-and-configuring-openocd)
     - [3.2.4. Creating and configuring the helloWorld project](#324-creating-and-configuring-the-helloworld-project)
+    - [3.2.5. Creating a Debug Configuration](#325-creating-a-debug-configuration)
   - [3.3. References](#33-references)
   - [3.4. Useful Links](#34-useful-links)
 
@@ -149,10 +150,48 @@ NOTE: You have to remember where you have placed this folder. I suggest, as ment
   Info : stm32f0x.cpu: hardware has 4 breakpoints, 2 watchpoints
   ```
 
-  Every time you start Eclipse, you will need to start *OpenOCD with Run > External Tools > OpenOCD*. When you exit Eclipse, it will kill the OpenOCD daemon. If for some reason it is still running, paste in a Terminal the command `killall openocd`. If you fancy command line interface over GUI for some reason (like me), you can run the openOCD without configuring Eclipse at all by first getting into the directory where you created the `cauv.cfg` file and running the command `openocd -f ./cauv.cfg` to launch openOCD. **NOTE that it is vital that your OpenOCD can run properly before proceeding as it *IS the only way* by which your computer communicates with the STM chip**. 
+  Every time you start Eclipse, you will need to start *OpenOCD with Run > External Tools > OpenOCD*. When you exit Eclipse, it will kill the OpenOCD daemon. If for some reason it is still running, paste in a Terminal the command `killall openocd`. If you fancy command line interface over GUI for some reason (like me), you can run the openOCD without configuring Eclipse at all by first getting into the directory where you created the `cauv.cfg` file and running the command `openocd -f ./cauv.cfg` to launch openOCD. **NOTE that it is vital that your OpenOCD can run properly before proceeding as it *IS the only way* by which your computer communicates with the STM chip**. If you get it running, congratulations! You have gotten the most difficult task under your control!
 
 ### 3.2.4. Creating and configuring the helloWorld project
 
+  To create a new project, click *File > New > C Project* and select *STM32F0xx C/C++ Project -> Cross ARM GCC* as shown in the image below:
+
+  ![new project](./new_project.jpeg "new project")
+
+  Then click next and enter the details **exactly** as shown. This **must** be entered correctly for the device that you are working on or else mysterious memory error will occur. 
+
+  ![Device config](./device_config.jpeg "Device config")
+
+  Then click *Next* several times, leaving the default options, until you reach the last step, where you select the toolchain name and path, as you can see in the image. You will have to browse for the path of the `bin` folder where you installed the *GCC ARM Toolchain*. See the example below to have a rough idea. 
+
+  ![Toolchain config](./toolchain_config.jpeg "Toolchain config")
+
+  Finally, click *finish* to create the project. Go to `/include/BlinkLed.h`to change the port and pin numbers to correspond to the LED on the CAUV PCB. Change both `BLINK_PORT_NUMBER` and `BLINK_PIN_NUMBER` to `0` as shown below. 
+  
+  ![Port config](./port_config.png)
+
+  Next, save the file and build the project by clicking *Project -> Build Project* and the build process should proceed smoothly without error. Now that the project is built, the only thing left is the add a *Debug Configuration*. 
+
+### 3.2.5. Creating a Debug Configuration
+
+  Click on *Run > Debug Configurations…* and double-click on *Zylin Embedded debug (Native)*. On the *“Debugger”* tab, click on the *GDB debugger field* and browse to select the gdb executable of the *GCC ARM toolchain*. It will be something like `PATH_TO_GCC/bin/arm-none-eabi-gdb`. 
+
+  ![debug config](./debug_config.png)
+
+  Finally, go to the *“Commands”* tab and paste this in the *‘Initialize’* commands box:
+
+  ```
+  target extended-remote localhost:3333
+  monitor reset init
+  load
+  monitor reset halt
+  ```
+
+  ![initialise config](./initialise_config.png)
+  
+  And now you are all good to go. Before getting too excited, click *Apply* and *Debug*. The debugging session will start, Eclipse will switch to the Debug perspective and the program will be downloaded to flash. Then, when you click on the *Resume (F8)* icon, the program will start executing, stopping at main. Clicking again on *Resume* will continue the execution. If everything is configured correctly, you will see the LED flashing on your board. You can pause/stop the execution, set breakpoints and watch variables and registers. 
+
+  Congratulations! You are now all set up to properly programme the STM32 on CAUV PCB. Happy coding!
   
 
 ## 3.3. References 
@@ -162,4 +201,4 @@ NOTE: You have to remember where you have placed this folder. I suggest, as ment
 
 ## 3.4. Useful Links
 
-  - [Datasheet of the STM device we are using (STM32F042)](http://www.st.com/content/ccc/resource/technical/document/datasheet/52/ad/d0/80/e6/be/40/ad/DM00105814.pdf/files/DM00105814.pdf/jcr:content/translations/en.DM00105814.pdf)
+  - [Datasheet of the STM device we are using (STM32F042F6P6 package TSSOP-20)](http://www.st.com/content/ccc/resource/technical/document/datasheet/52/ad/d0/80/e6/be/40/ad/DM00105814.pdf/files/DM00105814.pdf/jcr:content/translations/en.DM00105814.pdf)
