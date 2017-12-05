@@ -19,6 +19,7 @@ Author: Li Xi (xl404)
     - [3.2.3. Installing and Configuring OpenOCD](#323-installing-and-configuring-openocd)
     - [3.2.4. Creating and configuring the helloWorld project](#324-creating-and-configuring-the-helloworld-project)
     - [3.2.5. Creating a Debug Configuration](#325-creating-a-debug-configuration)
+    - [3.2.6. Creating a Release Run Configuration](#326-creating-a-release-run-configuration)
   - [3.3. References](#33-references)
   - [3.4. Useful Links](#34-useful-links)
 
@@ -193,6 +194,20 @@ NOTE: You have to remember where you have placed this folder. I suggest, as ment
 
   Congratulations! You are now all set up to properly programme the STM32 on CAUV PCB. Happy coding!
   
+### 3.2.6. Creating a Release Run Configuration
+
+  The debug configuration is useful for debugging but it will not work if the circuit is not connected to a debugger. If you need the programme to run on startup and to run without connecting to a debugger, you need a Release Run Configuration. 
+
+  First of all, build the project Release Configuration by setting the active build configuration. Click on *Project > Build Configurations > Set Active* and select *2 Release*. Then build the project. You should now see a `Release` folder in your project. Check that there is a file named `helloWorld.elf`, or - if your project has a different name - `yourProjectName.elf`. Remember the name of this file. 
+
+  Click on *Run > Run Configurations…* and double-click *GDB OpenOCD Debugging*. The following window will appear and enter the correct path under *C/C++ Application*. This is the path to the binary that is built using the Release Configuration above. In my case, it is `Release/helloWorld.elf` as shown in the figure below.
+
+  ![run config](./run_config.png) 
+
+  Finally, click *Run* and the debugger will flash the binary file onto the chip. 
+
+  PS: In fact, the binary file is the `.hex` file in the `Release` folder. When you Run the above Run Configuration, the `.hex` file is the file that is flashed into the chip. If you want to share the binary for some reason, you should share the `.hex` file. This file can be manually flashed into the chip via many different methods. For instance, this can be done with `openocd`. 
+
 
 ## 3.3. References 
 
