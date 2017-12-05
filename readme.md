@@ -165,7 +165,7 @@ NOTE: You have to remember where you have placed this folder. I suggest, as ment
 
   Then click *Next* several times, leaving the default options, until you reach the last step, where you select the toolchain name and path, as you can see in the image. You will have to browse for the path of the `bin` folder where you installed the *GCC ARM Toolchain*. See the example below to have a rough idea. 
 
-  ![Toolchain config](./toolchain_config.jpeg "Toolchain config")
+  ![Toolchain config](./toolchain_config.png "Toolchain config")
 
   Finally, click *finish* to create the project. Go to `/include/BlinkLed.h`to change the port and pin numbers to correspond to the LED on the CAUV PCB. Change both `BLINK_PORT_NUMBER` and `BLINK_PIN_NUMBER` to `0` as shown below. 
   
