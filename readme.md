@@ -11,7 +11,7 @@ Author: Li Xi (xl404)
   - [2.1. Overview](#21-overview)
   - [2.2. The Basics](#22-the-basics)
   - [2.3. Great KiCad Tutorials](#23-great-kicad-tutorials)
-- [3. Programming STM microprocessors](#3-programming-stm-microprocessors)
+- [3. Programming STM Microprocessors - Getting started](#3-programming-stm-microprocessors---getting-started)
   - [3.1. Table of software and packages required](#31-table-of-software-and-packages-required)
   - [3.2. Installing the IDEs and required packages on a Mac](#32-installing-the-ides-and-required-packages-on-a-mac)
     - [3.2.1. Eclipse IDE and required packages in Eclipse](#321-eclipse-ide-and-required-packages-in-eclipse)
@@ -22,6 +22,8 @@ Author: Li Xi (xl404)
     - [3.2.6. Creating a Release Run Configuration](#326-creating-a-release-run-configuration)
   - [3.3. References](#33-references)
   - [3.4. Useful Links](#34-useful-links)
+- [4. Programming STM Microprocessors - Going further](#4-programming-stm-microprocessors---going-further)
+  - [4.1. Cortex M Libraries and Operating Systems](#41-cortex-m-libraries-and-operating-systems)
 
 <!-- /TOC -->
 
@@ -62,7 +64,7 @@ The link https://hackaday.com/2016/09/21/creating-a-pcb-in-everything-introducti
 
 
 
-# 3. Programming STM microprocessors
+# 3. Programming STM Microprocessors - Getting started
 
 While the following section is intended for a Mac user, all of the packages are available for Linux and Windows as well. 
 
@@ -183,9 +185,11 @@ NOTE: You have to remember where you have placed this folder. I suggest, as ment
 
   ```
   target extended-remote localhost:3333
+  monitor arm semihosting enable
   monitor reset init
   load
   monitor reset halt
+  continue
   ```
 
   ![initialise config](./initialise_config.png)
@@ -217,3 +221,10 @@ NOTE: You have to remember where you have placed this folder. I suggest, as ment
 ## 3.4. Useful Links
 
   - [Datasheet of the STM device we are using (STM32F042F6P6 package TSSOP-20)](http://www.st.com/content/ccc/resource/technical/document/datasheet/52/ad/d0/80/e6/be/40/ad/DM00105814.pdf/files/DM00105814.pdf/jcr:content/translations/en.DM00105814.pdf)
+
+
+# 4. Programming STM Microprocessors - Going further
+
+## 4.1. Cortex M Libraries and Operating Systems
+
+  
